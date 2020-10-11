@@ -2951,7 +2951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944fd1e55cf521747a3f6572f79aeeb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Longer Message Duration
+  message: Longer Message Duration, even longer message that is really long
   messageduration: 5
 --- !u!114 &2047542994
 MonoBehaviour:
