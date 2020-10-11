@@ -1,12 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ContextualMessageTrigger : MonoBehaviour
 {
-    public delegate void ContextualMessageTriggerAction();
+    //public delegate void ContextualMessageTriggerAction();
+    [SerializeField]
+    private string message = "Default Message";
+    [SerializeField]
+    private float messageduration = 1.0f;
 
-    public static event ContextualMessageTriggerAction ContextualMessageTriggered;
+    public static event Action<string, float> ContextualMessageTriggered;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +19,7 @@ public class ContextualMessageTrigger : MonoBehaviour
         {
            if(ContextualMessageTriggered != null)
            {
-                ContextualMessageTriggered.Invoke();
+                ContextualMessageTriggered.Invoke(message, messageduration);
            }
         }
     }
