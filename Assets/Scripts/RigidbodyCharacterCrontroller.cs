@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RigidbodyCharacterCrontroller : MonoBehaviour
 {
@@ -40,9 +41,14 @@ public class RigidbodyCharacterCrontroller : MonoBehaviour
         }
         
     }
-    private void Update()
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        input = context.ReadValue<Vector2>(); 
+    }
+    /*private void Update()
     {
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
-    }
+    }*/
 }
