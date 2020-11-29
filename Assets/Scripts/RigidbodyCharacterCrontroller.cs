@@ -22,11 +22,15 @@ public class RigidbodyCharacterCrontroller : MonoBehaviour
     private new Rigidbody rigidbody;
     private Vector2 input;
     private new Collider collider;
+    private readonly int MovementInputAnimParam = Animator.StringToHash("MovementInput");
+    private Animator animator;
+
 
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void FixedUpdate()
@@ -88,10 +92,15 @@ public class RigidbodyCharacterCrontroller : MonoBehaviour
         return cameraRelativeInputDirection;
        
     }
-
+    /// <summary>
+    /// This event handler is called from the PlayerInput component
+    /// using the new Input System
+    /// </summary>
+    /// <param name="context"></param>
     public void OnMove(InputAction.CallbackContext context)
     {
-        input = context.ReadValue<Vector2>(); 
+        input = context.ReadValue<Vector2>();
+        animator.SetFloat(MovementInputAnimParam, input.magnitude);
     }
 
    /* private void Update()
